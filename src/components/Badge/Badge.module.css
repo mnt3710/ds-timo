@@ -1,0 +1,64 @@
+/**
+ * Badge Styles - TiMo Design System
+ * Uses only semantic tokens, no hardcoded colors
+ */
+
+.badge {
+  /* Base styles */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  
+  /* Typography */
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  
+  /* Pill-ish shape */
+  border-radius: var(--radius-lg);
+  
+  /* Spacing */
+  padding: var(--space-1) var(--space-3);
+  
+  /* No interaction */
+  user-select: none;
+}
+
+/* ===== Size Variants ===== */
+.sm {
+  font-size: var(--font-size-xs);
+  padding: 0.125rem var(--space-2);
+}
+
+.md {
+  font-size: var(--font-size-sm);
+  padding: var(--space-1) var(--space-3);
+}
+
+.lg {
+  font-size: var(--font-size-base);
+  padding: var(--space-2) var(--space-4);
+}
+
+/* ===== Visual Variants ===== */
+
+/* Accent - Gold light (subtle gold highlight) */
+.accent {
+  background-color: var(--color-accent-subtle);
+  color: var(--indigo-raw);
+}
+
+/* Neutral - Surface color */
+.neutral {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+/* Indigo - Brand surface */
+.indigo {
+  background-color: var(--color-brand-surface);
+  color: var(--color-bg);
+}

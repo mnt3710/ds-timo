@@ -1,0 +1,133 @@
+/**
+ * TiMo Design System - Global Design Tokens
+ * 
+ * Based on the concept of "indigo denim × brass hardware"
+ * - Indigo: Base/surface for stability and calm
+ * - Gold: Functional accent for interactive elements only
+ */
+
+:root {
+  /* ===== Light Theme - Neutral Tokens ===== */
+  --color-bg: #FFFFFF;
+  --color-surface: #F4F3EF;
+  --color-border: #E4E2DA;
+  --color-text-primary: #2A2A26;
+  --color-text-secondary: #8A8A82;
+
+  /* ===== Brand Tokens (Theme-independent fixed values) ===== */
+  --indigo-raw: #2C3A66;     /* Fabric - primary surface (card, header, logo ink) */
+  --indigo-faded: #8C9BC0;   /* Fabric secondary (subtext, borders, subtle emphasis) */
+  --gold-base: #F0C33D;      /* Hardware - primary action (normal button) */
+  --gold-deep: #B98E0E;      /* Hardware - pressed/hover/active state */
+  --gold-light: #F8E09B;     /* Hardware - highlight (badge background, selected border) */
+
+  /* ===== Semantic Tokens (Component references) ===== */
+  --color-accent-primary: var(--gold-base);
+  --color-accent-primary-active: var(--gold-deep);
+  --color-accent-subtle: var(--gold-light);
+  --color-brand-surface: var(--indigo-raw);
+  --color-brand-surface-muted: var(--indigo-faded);
+
+  /* ===== Typography ===== */
+  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', 
+                      'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  --font-family-cursive: 'Dancing Script', 'Brush Script MT', cursive;
+  --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', 
+                      Consolas, 'Courier New', monospace;
+
+  --font-size-xs: 0.6875rem;  /* 11px */
+  --font-size-sm: 0.75rem;    /* 12px */
+  --font-size-base: 0.875rem; /* 14px */
+  --font-size-md: 1rem;       /* 16px */
+  --font-size-lg: 1.25rem;    /* 20px */
+  --font-size-xl: 1.75rem;    /* 28px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* ===== Spacing (4px increments) ===== */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+
+  /* ===== Border Radius ===== */
+  --radius-sm: 0.625rem;  /* 10px - cards */
+  --radius-md: 0.75rem;   /* 12px - cards */
+  --radius-lg: 1.25rem;   /* 20px - badges */
+  --radius-pill: 9999px;  /* pill shape - buttons */
+
+  /* ===== Shadows ===== */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* ===== Transitions ===== */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+}
+
+/* ===== Dark Theme ===== */
+[data-theme='dark'] {
+  --color-bg: #14161C;
+  --color-surface: #20263A;
+  --color-border: #2A2B2E;
+  --color-text-primary: #EDEDEF;
+  --color-text-secondary: #8C9BC0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-bg: #14161C;
+    --color-surface: #20263A;
+    --color-border: #2A2B2E;
+    --color-text-primary: #EDEDEF;
+    --color-text-secondary: #8C9BC0;
+  }
+}
+
+/* ===== Reduced Motion Support ===== */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-normal: 0ms;
+    --transition-slow: 0ms;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== Base Styles Reset ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

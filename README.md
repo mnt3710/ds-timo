@@ -1,0 +1,215 @@
+# TiMo Design System
+
+A unified design system for the TiMo brand family (dig-vault, fillma, and Panora).
+
+## 🎨 Brand Concept
+
+TiMo is inspired by **"indigo denim × brass hardware"** — representing the vintage aesthetic of fabric and functional metal elements:
+
+- **Indigo (Fabric)**: Base surfaces, stability, and calm
+- **Gold (Hardware)**: Functional accents for interactive elements only
+
+## 📦 Installation
+
+```bash
+npm install @timo/design-system
+# or
+yarn add @timo/design-system
+```
+
+## 🚀 Usage
+
+```tsx
+import { Button, Card, Badge, Logo } from '@timo/design-system';
+
+function App() {
+  return (
+    <Card variant="indigo">
+      <Logo variant="white" size="md" />
+      <h1>Welcome to TiMo</h1>
+      <Badge variant="accent">New</Badge>
+      <Button variant="primary">Get Started</Button>
+    </Card>
+  );
+}
+```
+
+## 🎯 Design Principles
+
+### Color Usage Rules
+
+1. **Gold (accent)** is used for functional points only:
+   - Buttons
+   - Interactive icons
+   - Badges
+   - Selected states
+   
+2. **Indigo (brand)** can be used as surfaces:
+   - Cards
+   - Headers
+   - Containers
+   
+3. **Logo is always monochrome** (black or white only)
+   - Never apply brand colors to the logo
+   - No gradients or shadows
+
+### Typography
+
+- **UI Text**: Neutral sans-serif (system fonts)
+- **Cursive**: Only for logo and momentary signatures (e.g., "Save Complete")
+- **Monospace**: Optional for data display (codes, timestamps)
+
+### Motion
+
+- Minimal decorative animations
+- Respects `prefers-reduced-motion`
+- One animation per flow maximum
+
+## 🌗 Dark Mode
+
+All components automatically support dark mode via `data-theme` attribute:
+
+```tsx
+<div data-theme="dark">
+  <Button>Dark Mode Button</Button>
+</div>
+```
+
+Or use system preference:
+
+```tsx
+// Automatically follows prefers-color-scheme
+<div>
+  <Button>Auto Theme Button</Button>
+</div>
+```
+
+## 📚 Components
+
+### Button
+
+Pill-shaped button with gold accent for primary actions.
+
+```tsx
+<Button variant="primary" size="md">
+  Click Me
+</Button>
+```
+
+**Props:**
+- `variant`: `'primary' | 'secondary' | 'ghost'`
+- `size`: `'sm' | 'md' | 'lg'`
+- `fullWidth`: `boolean`
+- `disabled`: `boolean`
+
+### Badge
+
+Compact label using gold-light for subtle highlighting.
+
+```tsx
+<Badge variant="accent" size="md">
+  New
+</Badge>
+```
+
+**Props:**
+- `variant`: `'accent' | 'neutral' | 'indigo'`
+- `size`: `'sm' | 'md' | 'lg'`
+
+### Card
+
+Container with rounded corners using indigo or surface colors.
+
+```tsx
+<Card variant="indigo" onClick={() => console.log('Clicked')}>
+  <h3>Card Title</h3>
+  <p>Card content goes here</p>
+</Card>
+```
+
+**Props:**
+- `variant`: `'default' | 'indigo' | 'elevated'`
+- `onClick`: Optional click handler (makes card interactive)
+
+### Logo
+
+Crown icon + cursive "TiMo" signature.
+
+```tsx
+<Logo variant="black" size="md" />
+```
+
+**Props:**
+- `variant`: `'black' | 'white'` (monochrome only)
+- `size`: `'sm' | 'md' | 'lg' | 'xl'`
+
+## 🎨 Design Tokens
+
+All design tokens are defined as CSS custom properties:
+
+```css
+/* Brand Colors */
+--indigo-raw: #2C3A66;
+--indigo-faded: #8C9BC0;
+--gold-base: #F0C33D;
+--gold-deep: #B98E0E;
+--gold-light: #F8E09B;
+
+/* Semantic Tokens */
+--color-accent-primary: var(--gold-base);
+--color-accent-primary-active: var(--gold-deep);
+--color-accent-subtle: var(--gold-light);
+--color-brand-surface: var(--indigo-raw);
+--color-brand-surface-muted: var(--indigo-faded);
+
+/* Spacing (4px increments) */
+--space-1: 0.25rem;  /* 4px */
+--space-2: 0.5rem;   /* 8px */
+--space-3: 0.75rem;  /* 12px */
+--space-4: 1rem;     /* 16px */
+--space-5: 1.25rem;  /* 20px */
+--space-6: 1.5rem;   /* 24px */
+--space-8: 2rem;     /* 32px */
+```
+
+## 🔧 Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start Storybook
+npm run storybook
+
+# Build library
+npm run build
+
+# Build Storybook
+npm run build-storybook
+```
+
+## 📖 Documentation
+
+View the complete component library in Storybook:
+
+```bash
+npm run storybook
+```
+
+## 🤝 Contributing
+
+This design system is shared across:
+- **dig-vault**: Vintage item discovery
+- **fillma**: Tool creation platform
+- **Panora**: [Description]
+
+When adding new components:
+1. Use semantic tokens only (no hardcoded colors)
+2. Support both light and dark themes
+3. Follow the indigo × gold color philosophy
+4. Include Storybook stories
+5. Respect accessibility guidelines
+
+## 📄 License
+
+MIT
