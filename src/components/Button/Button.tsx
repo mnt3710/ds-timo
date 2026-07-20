@@ -11,6 +11,10 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
    */
   size?: 'sm' | 'md' | 'lg';
   /**
+   * The border radius of the button
+   */
+  rounded?: 'sm' | 'md' | 'lg' | 'pill';
+  /**
    * Whether the button should take full width of container
    */
   fullWidth?: boolean;
@@ -30,7 +34,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     { 
       variant = 'primary', 
-      size = 'md', 
+      size = 'md',
+      rounded = 'md',
       fullWidth = false,
       className = '',
       children,
@@ -43,6 +48,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       styles.button,
       styles[variant],
       styles[size],
+      styles[`rounded-${rounded}`],
       fullWidth ? styles.fullWidth : '',
       disabled ? styles.disabled : '',
       className,

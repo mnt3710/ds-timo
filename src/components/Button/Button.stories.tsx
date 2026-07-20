@@ -17,6 +17,10 @@ const meta = {
       control: 'select',
       options: ['sm', 'md', 'lg'],
     },
+    rounded: {
+      control: 'select',
+      options: ['sm', 'md', 'lg', 'pill'],
+    },
     fullWidth: {
       control: 'boolean',
     },
@@ -85,5 +89,33 @@ export const FullWidth: Story = {
   },
   parameters: {
     layout: 'padded',
+  },
+};
+
+export const RoundedSmall: Story = {
+  args: {
+    rounded: 'sm',
+    children: 'Rounded Small',
+  },
+};
+
+export const RoundedMedium: Story = {
+  args: {
+    rounded: 'md',
+    children: 'Rounded Medium (Default)',
+  },
+};
+
+export const RoundedLarge: Story = {
+  args: {
+    rounded: 'lg',
+    children: 'Rounded Large',
+  },
+};
+
+export const RoundedPill: Story = {
+  args: {
+    rounded: 'pill',
+    children: 'Pill Shape',
   },
 };
