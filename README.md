@@ -2,6 +2,8 @@
 
 A unified design system for the TiMo brand family (dig-vault, fillma, and Panora).
 
+**[View the public Storybook](https://mnt3710.github.io/ds-timo/)**
+
 ## 🎨 Brand Concept
 
 TiMo is inspired by **"indigo denim × brass hardware"** — representing the vintage aesthetic of fabric and functional metal elements:
