@@ -76,7 +76,7 @@
 /* Primary - Gold hardware accent */
 .primary {
   background-color: var(--color-accent-primary);
-  color: var(--indigo-raw);
+  color: var(--color-on-accent);
   box-shadow: var(--shadow-sm);
 }
 

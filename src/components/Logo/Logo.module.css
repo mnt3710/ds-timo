@@ -6,81 +6,35 @@
  */
 
 .logo {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
+  display: inline-block;
+  line-height: 0;
   user-select: none;
 }
 
-.crown {
-  flex-shrink: 0;
-}
-
-.text {
-  /* Cursive font for signature - only used in logo */
-  font-family: var(--font-family-cursive);
-  font-weight: var(--font-weight-normal);
-  line-height: 1;
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* ===== Size Variants ===== */
 .sm {
-  gap: var(--space-1);
-}
-
-.sm .crown {
   width: 20px;
   height: 20px;
 }
 
-.sm .text {
-  font-size: 1rem; /* 16px */
-}
-
 .md {
-  gap: var(--space-2);
-}
-
-.md .crown {
   width: 28px;
   height: 28px;
 }
 
-.md .text {
-  font-size: 1.5rem; /* 24px */
-}
-
 .lg {
-  gap: var(--space-3);
-}
-
-.lg .crown {
   width: 36px;
   height: 36px;
 }
 
-.lg .text {
-  font-size: 2rem; /* 32px */
-}
-
 .xl {
-  gap: var(--space-4);
-}
-
-.xl .crown {
   width: 48px;
   height: 48px;
-}
-
-.xl .text {
-  font-size: 3rem; /* 48px */
-}
-
-/* ===== Color Variants (Monochrome only) ===== */
-.black {
-  color: #000000;
-}
-
-.white {
-  color: #FFFFFF;
 }

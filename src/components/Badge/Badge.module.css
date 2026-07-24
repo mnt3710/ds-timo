@@ -47,7 +47,7 @@
 /* Accent - Gold light (subtle gold highlight) */
 .accent {
   background-color: var(--color-accent-subtle);
-  color: var(--indigo-raw);
+  color: var(--color-on-accent);
 }
 
 /* Neutral - Surface color */

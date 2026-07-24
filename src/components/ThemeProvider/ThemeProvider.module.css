@@ -1,0 +1,5 @@
+.provider {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-base);
+}

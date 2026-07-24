@@ -38,9 +38,18 @@ const preview = {
   decorators: [
     (Story, context) => {
       const theme = context.globals.theme;
+      document.documentElement.setAttribute('data-theme', theme);
       
       return (
-        <div data-theme={theme} style={{ padding: '2rem' }}>
+        <div
+          data-theme={theme}
+          style={{
+            minHeight: '100vh',
+            padding: '2rem',
+            color: 'var(--color-text-primary)',
+            background: 'var(--color-bg)',
+          }}
+        >
           <Story />
         </div>
       );

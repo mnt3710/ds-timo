@@ -1,59 +1,86 @@
-import React from 'react';
-import styles from './Logo.module.css';
+import React from "react";
+import styles from "./Logo.module.css";
+import {
+  BlackTimoLogo,
+  FillmaExtensionIcon,
+  FillmaLogo,
+  FillmaToolbarIcon,
+  PanoraIcon,
+  WhiteTimoLogo,
+} from "./assets";
+
+export type LogoType =
+  | "timo"
+  | "fillma"
+  | "fillma-extension"
+  | "fillma-toolbar"
+  | "panora";
 
 export interface LogoProps {
   /**
-   * The color variant (only black or white allowed per brand guidelines)
+   * The TiMo product or asset to display
    */
-  variant?: 'black' | 'white';
+  type?: LogoType;
+  /**
+   * The TiMo logo color. Other logo types use their official asset colors.
+   */
+  variant?: "black" | "white";
   /**
    * The size of the logo
    */
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: "sm" | "md" | "lg" | "xl";
   /**
    * Additional CSS class
    */
   className?: string;
+  /**
+   * Accessible name. Use an empty string when the logo is decorative.
+   */
+  alt?: string;
 }
+
+const logoAssets: Record<Exclude<LogoType, "timo">, string> = {
+  fillma: FillmaLogo,
+  "fillma-extension": FillmaExtensionIcon,
+  "fillma-toolbar": FillmaToolbarIcon,
+  panora: PanoraIcon,
+};
+
+const defaultAlt: Record<LogoType, string> = {
+  timo: "TiMo",
+  fillma: "fillma",
+  "fillma-extension": "fillma extension",
+  "fillma-toolbar": "fillma toolbar",
+  panora: "Panora",
+};
 
 /**
  * Logo component - TiMo Design System
- * 
- * Crown icon + cursive "TiMo" signature.
- * MUST always be monochrome (black or white only).
- * Never use brand colors (indigo/gold) on the logo.
+ *
+ * Official logo assets for the TiMo product family.
  */
-export const Logo: React.FC<LogoProps> = ({ 
-  variant = 'black', 
-  size = 'md',
-  className = '' 
+export const Logo: React.FC<LogoProps> = ({
+  type = "timo",
+  variant = "black",
+  size = "md",
+  className = "",
+  alt,
 }) => {
-  const classNames = [
-    styles.logo,
-    styles[variant],
-    styles[size],
-    className,
-  ]
+  const classNames = [styles.logo, styles[size], className]
     .filter(Boolean)
-    .join(' ');
+    .join(" ");
+  const src =
+    type === "timo"
+      ? variant === "white"
+        ? WhiteTimoLogo
+        : BlackTimoLogo
+      : logoAssets[type];
 
   return (
     <div className={classNames}>
-      <svg 
-        className={styles.crown}
-        viewBox="0 0 24 24" 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path 
-          d="M12 2L15 8L21 9L16 14L18 21L12 17L6 21L8 14L3 9L9 8L12 2Z" 
-          fill="currentColor"
-        />
-      </svg>
-      <span className={styles.text}>TiMo</span>
+      <img className={styles.image} src={src} alt={alt ?? defaultAlt[type]} />
     </div>
   );
 };
 
-Logo.displayName = 'Logo';
+Logo.displayName = "Logo";

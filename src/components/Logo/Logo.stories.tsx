@@ -1,21 +1,32 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Logo } from './Logo';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Logo, type LogoType } from "./Logo";
 
 const meta = {
-  title: 'Components/Logo',
+  title: "Components/Logo",
   component: Logo,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
+    type: {
+      control: "select",
+      options: [
+        "timo",
+        "fillma",
+        "fillma-extension",
+        "fillma-toolbar",
+        "panora",
+      ],
+    },
     variant: {
-      control: 'select',
-      options: ['black', 'white'],
+      control: "select",
+      options: ["black", "white"],
+      description: "Only applies to the TiMo logo",
     },
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg', 'xl'],
+      control: "select",
+      options: ["sm", "md", "lg", "xl"],
     },
   },
 } satisfies Meta<typeof Logo>;
@@ -23,65 +34,85 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Black: Story = {
+export const TimoBlack: Story = {
   args: {
-    variant: 'black',
-    size: 'md',
+    type: "timo",
+    variant: "black",
+    size: "md",
   },
 };
 
-export const White: Story = {
+export const TimoWhite: Story = {
   args: {
-    variant: 'white',
-    size: 'md',
+    type: "timo",
+    variant: "white",
+    size: "md",
   },
   parameters: {
-    backgrounds: { default: 'dark' },
+    backgrounds: { default: "dark" },
   },
 };
 
-export const Small: Story = {
+export const Fillma: Story = {
   args: {
-    variant: 'black',
-    size: 'sm',
+    type: "fillma",
+    size: "xl",
   },
 };
 
-export const Medium: Story = {
+export const FillmaExtension: Story = {
   args: {
-    variant: 'black',
-    size: 'md',
+    type: "fillma-extension",
+    size: "xl",
   },
 };
 
-export const Large: Story = {
+export const FillmaToolbar: Story = {
   args: {
-    variant: 'black',
-    size: 'lg',
+    type: "fillma-toolbar",
+    size: "xl",
   },
 };
 
-export const ExtraLarge: Story = {
+export const Panora: Story = {
   args: {
-    variant: 'black',
-    size: 'xl',
+    type: "panora",
+    size: "xl",
   },
 };
 
-export const OnIndigoSurface: Story = {
-  args: {
-    variant: 'white',
-    size: 'lg',
-  },
-  decorators: [
-    (Story) => (
-      <div style={{ 
-        background: 'var(--indigo-raw)', 
-        padding: '40px',
-        borderRadius: '12px',
-      }}>
-        <Story />
-      </div>
-    ),
-  ],
+const logoTypes: LogoType[] = [
+  "timo",
+  "fillma",
+  "fillma-extension",
+  "fillma-toolbar",
+  "panora",
+];
+
+export const AllLogos: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 32,
+        padding: 32,
+      }}
+    >
+      {logoTypes.map((type) => (
+        <div
+          key={type}
+          style={{
+            display: "grid",
+            justifyItems: "center",
+            gap: 8,
+            minWidth: 96,
+          }}
+        >
+          <Logo type={type} size="xl" />
+          <span style={{ fontFamily: "sans-serif", fontSize: 12 }}>{type}</span>
+        </div>
+      ))}
+    </div>
+  ),
 };

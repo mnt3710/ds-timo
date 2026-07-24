@@ -25,8 +25,11 @@
   --color-accent-primary: var(--gold-base);
   --color-accent-primary-active: var(--gold-deep);
   --color-accent-subtle: var(--gold-light);
+  --color-on-accent: var(--indigo-raw);
   --color-brand-surface: var(--indigo-raw);
   --color-brand-surface-muted: var(--indigo-faded);
+  --color-danger: #B42318;
+  --color-danger-subtle: #FEE4E2;
 
   /* ===== Typography ===== */
   --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', 
@@ -79,17 +82,33 @@
   --transition-slow: 350ms ease-in-out;
 }
 
+/* Explicit themes always take precedence over the operating system setting. */
+[data-theme='light'] {
+  color-scheme: light;
+  --color-bg: #FFFFFF;
+  --color-surface: #F4F3EF;
+  --color-border: #E4E2DA;
+  --color-text-primary: #2A2A26;
+  --color-text-secondary: #8A8A82;
+  --color-danger: #B42318;
+  --color-danger-subtle: #FEE4E2;
+}
+
 /* ===== Dark Theme ===== */
 [data-theme='dark'] {
+  color-scheme: dark;
   --color-bg: #14161C;
   --color-surface: #20263A;
   --color-border: #2A2B2E;
   --color-text-primary: #EDEDEF;
   --color-text-secondary: #8C9BC0;
+  --color-danger: #FDA29B;
+  --color-danger-subtle: #3B1C1C;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
+    color-scheme: dark;
     --color-bg: #14161C;
     --color-surface: #20263A;
     --color-border: #2A2B2E;
@@ -130,4 +149,7 @@ body {
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition:
+    color var(--transition-normal),
+    background-color var(--transition-normal);
 }

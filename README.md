@@ -75,6 +75,18 @@ All components automatically support dark mode via `data-theme` attribute:
 </div>
 ```
 
+For React applications, use `ThemeProvider` at the application root. An
+explicit `light` or `dark` value takes precedence over the operating system
+setting.
+
+```tsx
+import { ThemeProvider } from '@timo/design-system';
+
+<ThemeProvider theme="light">
+  <App />
+</ThemeProvider>
+```
+
 Or use system preference:
 
 ```tsx
@@ -83,6 +95,34 @@ Or use system preference:
   <Button>Auto Theme Button</Button>
 </div>
 ```
+
+### Project primary color
+
+The default primary color is TiMo gold. A project can override the semantic
+accent colors without changing individual components:
+
+```tsx
+<ThemeProvider
+  theme="light"
+  accent={{
+    primary: '#DA6E55',
+    active: '#B95743',
+    subtle: '#F5D8D1',
+    foreground: '#142328',
+  }}
+>
+  <App />
+</ThemeProvider>
+```
+
+- `primary`: Buttons and other primary actions
+- `active`: Hover and pressed states
+- `subtle`: Focus rings and subtle accent surfaces
+- `foreground`: Text and icons displayed on the primary color
+
+These values map to CSS custom properties, so applications that do not use
+React may set `--color-accent-primary`, `--color-accent-primary-active`,
+`--color-accent-subtle`, and `--color-on-accent` directly.
 
 ## 📚 Components
 
@@ -133,15 +173,47 @@ Container with rounded corners using indigo or surface colors.
 
 ### Logo
 
-Crown icon + cursive "TiMo" signature.
+Official logo assets for the TiMo product family.
 
 ```tsx
-<Logo variant="black" size="md" />
+<Logo type="timo" variant="black" size="md" />
+<Logo type="fillma" size="lg" />
+<Logo type="panora" size="lg" />
 ```
 
 **Props:**
+- `type`: `'timo' | 'fillma' | 'fillma-extension' | 'fillma-toolbar' | 'panora'`
 - `variant`: `'black' | 'white'` (monochrome only)
 - `size`: `'sm' | 'md' | 'lg' | 'xl'`
+
+### Form controls
+
+`FormField` connects labels, helper text, errors, and accessibility attributes
+to `Input`, `Textarea`, or `Select`.
+
+```tsx
+<FormField
+  label="Email address"
+  helperText="Used for account notifications."
+  required
+>
+  <Input type="email" name="email" placeholder="name@example.com" />
+</FormField>
+
+<FormField label="Product" error="Select a product." required>
+  <Select name="product" placeholder="Select a product">
+    <option value="dig-vault">dig-vault</option>
+    <option value="fillma">fillma</option>
+    <option value="panora">Panora</option>
+  </Select>
+</FormField>
+
+<FormField label="Notes">
+  <Textarea name="notes" />
+</FormField>
+```
+
+`Label`, `Input`, `Textarea`, and `Select` can also be used independently.
 
 ## 🎨 Design Tokens
 
@@ -195,6 +267,10 @@ View the complete component library in Storybook:
 ```bash
 npm run storybook
 ```
+
+Architecture and contribution boundaries:
+
+- [Component architecture](docs/component-architecture.md)
 
 ## 🤝 Contributing
 
