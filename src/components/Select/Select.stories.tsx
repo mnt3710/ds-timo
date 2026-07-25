@@ -1,6 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Select } from "./Select";
 
+const projectOptions = [
+  { value: "dig-vault", label: "dig-vault" },
+  { value: "fillma", label: "fillma" },
+  { value: "panora", label: "Panora" },
+];
+
 const meta = {
   title: "Components/Form/Select",
   component: Select,
@@ -10,13 +16,7 @@ const meta = {
   tags: ["autodocs"],
   args: {
     placeholder: "Select a project",
-    children: (
-      <>
-        <option value="dig-vault">dig-vault</option>
-        <option value="fillma">fillma</option>
-        <option value="panora">Panora</option>
-      </>
-    ),
+    options: projectOptions,
   },
   decorators: [
     (Story) => (
@@ -47,5 +47,20 @@ export const Invalid: Story = {
 export const Disabled: Story = {
   args: {
     disabled: true,
+  },
+};
+
+export const WithSelectedValue: Story = {
+  args: {
+    defaultValue: "fillma",
+  },
+};
+
+export const WithDisabledOption: Story = {
+  args: {
+    options: [
+      ...projectOptions,
+      { value: "archived", label: "Archived project", disabled: true },
+    ],
   },
 };

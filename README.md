@@ -128,6 +128,26 @@ React may set `--color-accent-primary`, `--color-accent-primary-active`,
 
 ## 📚 Components
 
+### Component catalog
+
+| Category | Components |
+| --- | --- |
+| Actions | `Button`, `IconButton`, `Link` |
+| Forms | `FormField`, `Label`, `Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `Switch`, `Slider` |
+| Navigation | `Tabs`, `Pagination` |
+| Feedback | `Alert`, `Toast`, `Spinner`, `Progress`, `Skeleton`, `EmptyState` |
+| Overlays | `Popover`, `Dialog`, `Tooltip` |
+| Content and brand | `Card`, `Badge`, `Logo` |
+| Foundation | `ThemeProvider` |
+
+Use `Slider` when a user chooses a value within a numeric range. Use
+`Progress` when the application reports completion and the user does not
+directly control the value.
+
+Use `Pagination` for page-based collections where users need stable navigation
+and URLs. Applications built exclusively around an infinite feed do not need
+to show Pagination.
+
 ### Button
 
 Pill-shaped button with gold accent for primary actions.
@@ -203,11 +223,15 @@ to `Input`, `Textarea`, or `Select`.
 </FormField>
 
 <FormField label="Product" error="Select a product." required>
-  <Select name="product" placeholder="Select a product">
-    <option value="dig-vault">dig-vault</option>
-    <option value="fillma">fillma</option>
-    <option value="panora">Panora</option>
-  </Select>
+  <Select
+    name="product"
+    placeholder="Select a product"
+    options={[
+      { value: 'dig-vault', label: 'dig-vault' },
+      { value: 'fillma', label: 'fillma' },
+      { value: 'panora', label: 'Panora' },
+    ]}
+  />
 </FormField>
 
 <FormField label="Notes">
@@ -216,6 +240,26 @@ to `Input`, `Textarea`, or `Select`.
 ```
 
 `Label`, `Input`, `Textarea`, and `Select` can also be used independently.
+
+### Popover
+
+Use the shared popover surface for anchored floating content. It closes on
+outside click or `Escape` and follows the active theme.
+
+```tsx
+<Popover placement="bottom-start">
+  <PopoverTrigger>
+    <Button variant="ghost">Open details</Button>
+  </PopoverTrigger>
+  <PopoverContent style={{ padding: 16 }}>
+    Project details
+  </PopoverContent>
+</Popover>
+```
+
+`Select` uses this Popover internally, so its option list uses design-system
+colors, spacing, focus states, and Light/Dark themes instead of the browser's
+default select menu.
 
 ## 🎨 Design Tokens
 

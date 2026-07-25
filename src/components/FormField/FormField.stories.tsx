@@ -68,11 +68,15 @@ export const CompleteForm: Story = {
         <Input name="projectName" placeholder="My project" />
       </FormField>
       <FormField label="Product" required>
-        <Select name="product" placeholder="Select a product">
-          <option value="dig-vault">dig-vault</option>
-          <option value="fillma">fillma</option>
-          <option value="panora">Panora</option>
-        </Select>
+        <Select
+          name="product"
+          placeholder="Select a product"
+          options={[
+            { value: "dig-vault", label: "dig-vault" },
+            { value: "fillma", label: "fillma" },
+            { value: "panora", label: "Panora" },
+          ]}
+        />
       </FormField>
       <FormField label="Description" optionalText="Optional">
         <Textarea name="description" placeholder="What is this project for?" />

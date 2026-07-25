@@ -1,0 +1,33 @@
+.toast {
+  position: fixed;
+  z-index: 1200;
+  right: var(--space-6);
+  bottom: var(--space-6);
+  width: min(400px, calc(100vw - var(--space-8)));
+  box-shadow: var(--shadow-lg);
+  animation: toast-enter var(--transition-normal);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+}
